@@ -15,22 +15,22 @@ class ApiServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-        }
+//        if ($this->app->runningInConsole()) {
+//            $this->bootForConsole();
+//        }
         $this->publishes([
             __DIR__.'/../config/api.php' => config_path('apiLpr.php'),
-            __DIR__.'/IlpService.php' => app_path('/Services/.IlpService.php')
+            __DIR__.'/IlpService.php' => app_path('/Services/IlpService.php')
         ]);
     }
 
     public function bootForConsole()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                GenerateApi::class
-            ]);
-        }
+//        if ($this->app->runningInConsole()) {
+//            $this->commands([
+//                GenerateApi::class
+//            ]);
+//        }
     }
 
     /**
