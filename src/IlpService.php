@@ -1,6 +1,6 @@
 <?php
 
-namespace MercerMorning\Api;
+namespace App\Services;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
