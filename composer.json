@@ -1,8 +1,9 @@
 {
     "name": "mercermorning/api",
-    "description": "",
+    "description": "description",
     "license": "MIT",
     "version": "0.0.1",
+    "minimum-stability" : "stable",
     "authors": [
         {
             "name": "Mercer Morning",
