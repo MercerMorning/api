@@ -3,6 +3,7 @@
 namespace MercerMorning\Api;
 
 use Illuminate\Support\ServiceProvider;
+use MercerMorning\Api\Console\Commands\GenerateApi;
 
 class ApiServiceProvider extends ServiceProvider
 {
@@ -13,19 +14,23 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'mercermorning');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'mercermorning');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
-        // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
         $this->publishes([
-            __DIR__.'/../config/api.php' => config_path('api.php'),
-            __DIR__.'/Api.php' => app_path('/Services/Api.php')
+            __DIR__.'/../config/api.php' => config_path('apiLpr.php'),
+            __DIR__.'/IlpService.php' => app_path('/Services/.IlpService.php')
         ]);
+    }
+
+    public function bootForConsole()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                GenerateApi::class
+            ]);
+        }
     }
 
     /**
@@ -53,34 +58,4 @@ class ApiServiceProvider extends ServiceProvider
         return ['api'];
     }
 
-    /**
-     * Console-specific booting.
-     *
-     * @return void
-     */
-    protected function bootForConsole(): void
-    {
-        // Publishing the configuration file.
-        $this->publishes([
-            __DIR__.'/../config/api.php' => config_path('api.php'),
-        ], 'api.config');
-
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/mercermorning'),
-        ], 'api.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/mercermorning'),
-        ], 'api.views');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/mercermorning'),
-        ], 'api.views');*/
-
-        // Registering package commands.
-        // $this->commands([]);
-    }
 }

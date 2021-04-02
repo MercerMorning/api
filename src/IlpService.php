@@ -5,7 +5,7 @@ namespace MercerMorning\Api;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
 
-class Api
+class IlpService
 {
     private $client;
     private $method;
