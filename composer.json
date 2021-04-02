@@ -8,7 +8,7 @@
             "email": "hugopochta@gmail.com"
         }
     ],
-    "homepage": "https://github.com/mercermorning/api",
+    "homepage": "https://github.com/MercerMorning/api",
     "keywords": ["Laravel", "Api"],
     "require": {
         "guzzlehttp/guzzle": "^7.0.1",
